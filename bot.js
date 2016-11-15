@@ -21,7 +21,7 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = "clear screen";//cool();
+  botResponse = "\n\n\nclear screen";//cool();
 
   options = {
     hostname: 'api.groupme.com',
