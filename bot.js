@@ -7,7 +7,7 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /(.|)*(E|e)(as(y|ie(r|st))|(z|Z))/;
 
-  if(request.text && botRegex.test(request.text) && (request.name != "How easy?")) {
+  if(request.text && botRegex.test(request.text) && (request.name != "ez")) {
     this.res.writeHead(200);
     postMessage();
     this.res.end();
