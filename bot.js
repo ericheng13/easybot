@@ -22,7 +22,7 @@ function respond() {
 
 function postMessage(response) {
   var botResponse, options, body, botReq, easyResponses;
-  var easyResponses = [ "so easy", "too easy", "way too easy", "the easiest", "not hard. really", "so god damn easy", "I'll show you easy!", "piece of cake", "E. Z", "never been easier", "SO. EASY.", "not as easy as your waifu.. kya!~"]
+  var easyResponses = [ "so easy", "too easy", "way too easy", "the easiest", "not hard. really", "so god damn easy", "I'll show you easy!", "piece of cake", "E. Z", "never been easier", "SO. EASY.", "not as easy as your waifu.. kya!~"];
 
 
   botResponse = easyResponses[getRandomInt(0,waifuPhrases.length)];//"so easy";//cool();
