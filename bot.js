@@ -7,7 +7,7 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /(.|)*(E|e)asy/;
 
-  if(request.text && botRegex.test(request.text)) {
+  if(request.text && botRegex.test(request.text) && (request.name.toUpperCase() != "How easy?".toUpperCase())) {
     this.res.writeHead(200);
     postMessage();
     this.res.end();
