@@ -1,5 +1,4 @@
 var HTTPS = require('https');
-var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
 
@@ -25,7 +24,7 @@ function postMessage(response) {
   var easyResponses = [ "so easy", "too easy", "way too easy", "the easiest", "not hard. really", "so god damn easy", "I'll show you easy!", "piece of cake", "E. Z", "never been easier", "SO. EASY.", "not as easy as your waifu.. kya!~"];
 
 
-  botResponse = getRandomInt[0,easyResponses.length];//"so easy";//cool();
+  botResponse = getRandomInt[0, 10];//"so easy";//cool();
 
   options = {
     hostname: 'api.groupme.com',
