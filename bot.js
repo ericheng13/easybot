@@ -5,7 +5,7 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /(.|)*(E|e)asy/;
+      botRegex = /(.|)*(E|e)(as(y|ie(r|st))|(z|Z))/;
 
   if(request.text && botRegex.test(request.text) && (request.name != "How easy?")) {
     this.res.writeHead(200);
