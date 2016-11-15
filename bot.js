@@ -7,9 +7,14 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /(.|)*(E|e)(as(y|ie(r|st))|(z|Z))/;
 
+  var easyResponses = [ "so easy", "too easy", "way too easy", "the easiest", "not hard. really",
+                        "so god damn easy", "I'll show you easy!", "piece of cake", "E. Z.",
+                        "never been easier", "SO. EASY.", "not as easy as your waifu.. kya!~"]
+
+
   if(request.text && botRegex.test(request.text) && (request.name != "ez")) {
     this.res.writeHead(200);
-    postMessage();
+    postMessage(getReturnString(easyResponses[getRandomInt(0,easyResponses.length)], request.name));
     this.res.end();
   } else {
     console.log("don't care");
@@ -18,10 +23,10 @@ function respond() {
   }
 }
 
-function postMessage() {
-  var botResponse, options, body, botReq;
+function postMessage(response) {
+  var botResponse, options, body, botReq, easyResponses;
 
-  botResponse = "so easy";//cool();
+  botResponse = response;//"so easy";//cool();
 
   options = {
     hostname: 'api.groupme.com',
