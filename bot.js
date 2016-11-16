@@ -26,7 +26,11 @@ function respond() {
     this.res.writeHead(200);
     postMessage(hardResponses[getRandomInt(0, hardResponses.length)]);
     this.res.end();
-  } else {
+  } else if(request.text && (botRegex.test(request.text) || botRegexHard.test(request.text) || botRegexDifficult.test(request.text)) && (request.name == "Cancer")) {
+    this.res.writeHead(200);
+    postMessage("terminate yourself you cancerous shit");
+    this.res.end();
+  else {
     console.log("don't care");
     this.res.writeHead(200);
     this.res.end();
