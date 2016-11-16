@@ -4,13 +4,27 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /(.|)*(E|e)(as(y|ie(r|st))|(z|Z))/;
+      botRegex = /(| )(E|e)(as(y|ie(r|st))|(z|Z))/;
+      botRegexHard = /(| )(H|h)(ard|ARD)/;
+      botRegexDifficult = /(| )(D|d)(ifficult|IFFICULT)/;
+    var easyResponses = [ "so easy", "too easy", "way too easy", "the easiest",
+      "not hard. really", "so god damn easy", "I'll show you easy!",
+      "piece of cake", "E. Z.", "never been easier", "SO. EASY.",
+      "not as easy as your waifu.. kya!~"];
+    var hardResponses = [ "Please..", "So easy",
+      "Try harder. It's probably so easy.",
+      "Yeah, you wish it was hard ( ͡° ͜ʖ ͡°)", "kys", "Not that hard",
+      "don't be a lil bitch. that shit so EZ", "suck it up", "( ͡° ͜ʖ ͡°)"];
 
 
 
-  if(request.text && botRegex.test(request.text) && (request.name != "ez")) {
+  if(request.text && botRegex.test(request.text) && (request.name != "ez") && (request.name.toUpperCase() != "GroupMe".toUpperCase())) {
     this.res.writeHead(200);
-    postMessage();
+    postMessage(easyResponses[getRandomInt(0, easyResponses.length)]);
+    this.res.end();
+  } else if(request.text && (botRegexHard.test(request.text) || botRegexDifficult.test(request.text)) && (request.name != "ez") && (request.name.toUpperCase() != "GroupMe".toUpperCase())) {
+    this.res.writeHead(200);
+    postMessage(hardResponses[getRandomInt(0, hardResponses.length)]);
     this.res.end();
   } else {
     console.log("don't care");
@@ -21,10 +35,9 @@ function respond() {
 
 function postMessage(response) {
   var botResponse, options, body, botReq, easyResponses;
-  var easyResponses = [ "so easy", "too easy", "way too easy", "the easiest", "not hard. really", "so god damn easy", "I'll show you easy!", "piece of cake", "E. Z", "never been easier", "SO. EASY.", "not as easy as your waifu.. kya!~"];
 
 
-  botResponse = easyResponses[getRandomInt(0, easyResponses.length)];//"so easy";//cool();
+  botResponse = response;//"so easy";//cool();
 
   options = {
     hostname: 'api.groupme.com',
