@@ -4,9 +4,9 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /(.| )(E|e)(as(y|ie(r|st))|(z|Z))/;
-      botRegexHard = /(.| )(H|h)(ard|ARD)/;
-      botRegexDifficult = /(| )(D|d)(ifficult|IFFICULT)/;
+      botRegex = /(^| )(E|e)(as(y|ie(r|st))|(z|Z))/;
+      botRegexHard = /(^| )(H|h)(ard|ARD)/;
+      botRegexDifficult = /(^| )(D|d)(ifficult|IFFICULT)/;
     var easyResponses = [ "so easy", "too easy", "way too easy", "the easiest",
       "not hard. really", "so god damn easy", "I'll show you easy!",
       "piece of cake", "E. Z.", "never been easier", "SO. EASY.",
