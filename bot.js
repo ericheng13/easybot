@@ -5,6 +5,7 @@ var botID = process.env.BOT_ID;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /(^| )(E|e)(as(y|ie(r|st))|(z|Z))/;
+      botRegexSimple = /(^| )(S|s)(imple|IMPLE)/;
       botRegexHard = /(^| )(H|h)(ard|ARD)/;
       botRegexDifficult = /(^| )(D|d)(ifficult|IFFICULT)/;
     var easyResponses = [ "so easy", "too easy", "way too easy", "the easiest",
@@ -18,7 +19,7 @@ function respond() {
 
 
 
-  if(request.text && botRegex.test(request.text) && (request.name != "ez") && (request.name != "Cancer") && (request.name.toUpperCase() != "GroupMe".toUpperCase())) {
+  if(request.text && (botRegex.test(request.text) || botRegexSimple.test(request.text)) && (request.name != "ez") && (request.name != "Cancer") && (request.name.toUpperCase() != "GroupMe".toUpperCase())) {
     this.res.writeHead(200);
     postMessage(easyResponses[getRandomInt(0, easyResponses.length)]);
     this.res.end();
