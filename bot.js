@@ -4,8 +4,8 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /(| )(E|e)(as(y|ie(r|st))|(z|Z))/;
-      botRegexHard = /(| )(H|h)(ard|ARD)/;
+      botRegex = /(.| )(E|e)(as(y|ie(r|st))|(z|Z))/;
+      botRegexHard = /(.| )(H|h)(ard|ARD)/;
       botRegexDifficult = /(| )(D|d)(ifficult|IFFICULT)/;
     var easyResponses = [ "so easy", "too easy", "way too easy", "the easiest",
       "not hard. really", "so god damn easy", "I'll show you easy!",
@@ -18,11 +18,11 @@ function respond() {
 
 
 
-  if(request.text && botRegex.test(request.text) && (request.name != "ez") && (request.name.toUpperCase() != "GroupMe".toUpperCase())) {
+  if(request.text && botRegex.test(request.text) && (request.name != "ez") && (request.name != "Cancer") && (request.name.toUpperCase() != "GroupMe".toUpperCase())) {
     this.res.writeHead(200);
     postMessage(easyResponses[getRandomInt(0, easyResponses.length)]);
     this.res.end();
-  } else if(request.text && (botRegexHard.test(request.text) || botRegexDifficult.test(request.text)) && (request.name != "ez") && (request.name.toUpperCase() != "GroupMe".toUpperCase())) {
+  } else if(request.text && (botRegexHard.test(request.text) || botRegexDifficult.test(request.text)) && (request.name != "ez") && (request.name != "Cancer") && (request.name.toUpperCase() != "GroupMe".toUpperCase())) {
     this.res.writeHead(200);
     postMessage(hardResponses[getRandomInt(0, hardResponses.length)]);
     this.res.end();
